@@ -1,0 +1,30 @@
+.app-container {
+  background-color: lightgray;
+
+  padding: 1rem;
+  .app {
+    margin: 0.5 rem;
+    padding: 0.5rem;
+    .nav-tabs {
+      max-width: 15.5rem;
+      background-color: #007bff;
+
+      .nav-link {
+        border-radius: 0em;
+        background-color: #007bff;
+        color: white;
+        border-top: 0.3rem solid #007bff;
+        border-left: 0px;
+        border-right: 0px;
+        &.active {
+          background-color: white;
+          color: black;
+        }
+      }
+    }
+
+    .tab-content {
+      background-color: white;
+    }
+  }
+}
