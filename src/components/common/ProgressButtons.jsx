@@ -13,6 +13,7 @@ export const ProgressButtons = props => {
       ) : null}
       {currentStep < steps.length - 1 ? (
         <Button
+          disabled={props.invalid}
           color="primary"
           onClick={() => {
             props.onUpdate();

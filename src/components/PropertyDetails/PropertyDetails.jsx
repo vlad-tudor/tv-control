@@ -1,12 +1,15 @@
 import * as React from "react";
 import { useState } from "react";
-import { Container, Input, Label, Row, Col } from "reactstrap";
+import { Container, Input, Label, Row, Col, FormFeedback } from "reactstrap";
 import { FormCard } from "../common/FormCard";
 import { ProgressButtons } from "../common/ProgressButtons";
 import { PropertySelect } from "./PropertySelect";
+import { ValidInput } from "../common/ValidInput";
+import { notNullProperty, validateProperty } from "../../domain/property";
 
 export const PropertyDetails = props => {
   const [property, setProperty] = useState(props.property);
+  const invalid = validateProperty(property);
   return (
     <Container>
       <br />
@@ -16,7 +19,8 @@ export const PropertyDetails = props => {
             <Label>Applicaiton Address</Label>
           </Col>
           <Col md="7">
-            <Input
+            <ValidInput
+              validation={notNullProperty}
               type="text"
               value={property.address}
               onChange={e => {
@@ -59,6 +63,7 @@ export const PropertyDetails = props => {
       </FormCard>
 
       <ProgressButtons
+        invalid={invalid}
         progress={props.progress}
         onUpdate={() => props.onUpdate(property)}
         updateProgress={props.updateProgress}
