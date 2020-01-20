@@ -12,7 +12,7 @@ export const PropertyDetails = props => {
       <br />
       <FormCard icon="home" header="Property Details">
         <Row>
-          <Col md="5" style={{ textAlign: "right" }}>
+          <Col md="5">
             <Label>Applicaiton Address</Label>
           </Col>
           <Col md="7">
@@ -27,7 +27,7 @@ export const PropertyDetails = props => {
         </Row>
         <br />
         <Row>
-          <Col md="5" style={{ textAlign: "right" }}>
+          <Col md="5">
             <Label>Property Type</Label>
           </Col>
           <Col md="5">
@@ -43,7 +43,7 @@ export const PropertyDetails = props => {
 
       <FormCard header="Property Manager Details">
         <Row>
-          <Col md="5" style={{ textAlign: "right" }}>
+          <Col md="5">
             <Label>Agent Name</Label>
           </Col>
           <Col md="7">

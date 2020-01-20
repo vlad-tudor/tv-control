@@ -36,7 +36,6 @@ class App extends React.Component {
     getProgress();
   }
   render() {
-    console.log(this.state.activeTab);
     return (
       <div className="app-container">
         <Container className="app">

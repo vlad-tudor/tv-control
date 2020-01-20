@@ -1,9 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
-import { FormCard } from "../common/FormCard";
+import { FormCard, FormCardHeader } from "../common/FormCard";
 import { ProgressButtons } from "../common/ProgressButtons";
-import { Container, Button, Input } from "reactstrap";
-import { steps } from "../../domain/progress";
+import { Container, Input, Row, Col, Label } from "reactstrap";
 
 export const Occupancy = props => {
   const [occupancy, setOccupancy] = useState(props.occupancy);
@@ -11,15 +10,32 @@ export const Occupancy = props => {
   return (
     <Container>
       <br />
-      <FormCard header="Occupants">
-        <Input
-          type="number"
-          min={0}
-          value={occupancy.occupants}
-          onChange={e => {
-            setOccupancy({ ...occupancy, occupants: e.target.value });
-          }}
-        />
+      <FormCard>
+        <FormCardHeader icon="users" header={"Occupants"}>
+          <div>
+            You can confirm that you have{" "}
+            <a href="http://www.tv-control.co.uk/">person's consent</a> to
+            provide their personal information
+          </div>
+        </FormCardHeader>
+        <Row>
+          <Col md="5">
+            <Label>
+              Apart from the above, how many other people will be occupying the
+              property?
+            </Label>
+          </Col>
+          <Col md="5">
+            <Input
+              type="number"
+              min={0}
+              value={occupancy.occupants}
+              onChange={e => {
+                setOccupancy({ ...occupancy, occupants: e.target.value });
+              }}
+            />
+          </Col>
+        </Row>
       </FormCard>
       <FormCard header="Vehicles">
         <Input
