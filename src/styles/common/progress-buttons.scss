@@ -1,7 +1,14 @@
 .progress-buttons {
   display: flex;
   justify-content: flex-end;
+
   button:last-child {
     margin-left: 0.5rem;
+  }
+
+  .back-button {
+    background-color: white;
+    color: #007bff;
+    border-color: #007bff;
   }
 }

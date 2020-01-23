@@ -7,8 +7,11 @@ export const ProgressButtons = props => {
   return (
     <div className="progress-buttons">
       {currentStep > 0 ? (
-        <Button onClick={() => props.updateProgress({ step: currentStep - 1 })}>
-          {"<"} back
+        <Button
+          className="back-button"
+          onClick={() => props.updateProgress({ step: currentStep - 1 })}
+        >
+          {"<"} Back
         </Button>
       ) : null}
       {currentStep < steps.length - 1 ? (
@@ -20,7 +23,7 @@ export const ProgressButtons = props => {
             props.updateProgress({ step: currentStep + 1 });
           }}
         >
-          next: {steps[currentStep + 1].title} >
+          Next: {steps[currentStep + 1].title} >
         </Button>
       ) : null}
     </div>

@@ -11,3 +11,5 @@ export const validateObject = (object, validationMapping) => {
   });
   return invalid;
 };
+
+export const checkNullValidation = message => value => (value ? "" : message);

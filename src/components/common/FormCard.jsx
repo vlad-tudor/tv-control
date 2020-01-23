@@ -3,19 +3,21 @@ import { Jumbotron } from "reactstrap";
 import { Icon } from "react-icons-kit";
 import { home } from "react-icons-kit/icomoon/home";
 import { users } from "react-icons-kit/icomoon/users";
+import { userTie } from "react-icons-kit/icomoon/userTie";
+
+// https://react-icons-kit.now.sh/iconset/icomoon
 
 const iconList = {
   home: home,
   users: users,
+  userTie: userTie,
   default: home
 };
 
 export const FormCard = props => (
   <Jumbotron className={`form-card ${props.className}`}>
     {props.header ? (
-      <>
-        <FormCardHeader header={props.header} icon={props.icon} />
-      </>
+      <FormCardHeader header={props.header} icon={props.icon} />
     ) : null}
     <div>{props.children}</div>
   </Jumbotron>

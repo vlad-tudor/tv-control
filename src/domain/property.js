@@ -1,4 +1,4 @@
-import { validateObject } from "./util";
+import { validateObject, checkNullValidation } from "./util";
 
 export const propertyOptions = [
   { value: "appartment", label: "Appartment" },
@@ -6,10 +6,16 @@ export const propertyOptions = [
   { value: "castle", label: "Castle" }
 ];
 
-export const notNullProperty = value => (value ? "" : "Must provide address");
+// validation functions for each specific field
+export const notNullProperty = checkNullValidation("Must provide an address");
+export const notNullAgency = checkNullValidation("Must provide an agent name");
+export const notNullDate = checkNullValidation("Must provide a date");
 
+// validation button for the button to prevent proress
 export const propertyValidationMapping = {
-  address: notNullProperty
+  address: notNullProperty,
+  agency: notNullAgency,
+  commencementDate: notNullDate
 };
 
 export const validateProperty = property => {
