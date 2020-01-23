@@ -1,11 +1,19 @@
 import * as React from "react";
 import { useState } from "react";
-import { Container, Input, Label, Row, Col } from "reactstrap";
+import { Container, Label, Row, Col } from "reactstrap";
 import { FormCard } from "../common/FormCard";
 import { ProgressButtons } from "../common/ProgressButtons";
 import { PropertySelect } from "./PropertySelect";
-import { ValidInput } from "../common/ValidInput";
-import { notNullProperty, validateProperty } from "../../domain/property";
+import { StandardInput, withValidation } from "../common/ValidInput";
+import {
+  notNullProperty,
+  validateProperty,
+  notNullAgency,
+  notNullDate
+} from "../../domain/property";
+import DatePicker from "react-datepicker";
+
+const ValidDatePicker = withValidation(DatePicker);
 
 export const PropertyDetails = props => {
   const [property, setProperty] = useState(props.property);
@@ -14,21 +22,15 @@ export const PropertyDetails = props => {
     <Container>
       <br />
       <FormCard icon="home" header="Property Details">
-        <Row>
-          <Col md="5">
-            <Label>Applicaiton Address</Label>
-          </Col>
-          <Col md="7">
-            <ValidInput
-              validation={notNullProperty}
-              type="text"
-              value={property.address}
-              onChange={e => {
-                setProperty({ ...property, address: e.target.value });
-              }}
-            />
-          </Col>
-        </Row>
+        <StandardInput
+          label="Property Address"
+          validation={notNullProperty}
+          type="text"
+          value={property.address}
+          onChange={e => {
+            setProperty({ ...property, address: e.target.value });
+          }}
+        />
         <br />
         <Row>
           <Col md="5">
@@ -43,23 +45,33 @@ export const PropertyDetails = props => {
             />
           </Col>
         </Row>
-      </FormCard>
-
-      <FormCard header="Property Manager Details">
+        <br />
         <Row>
           <Col md="5">
-            <Label>Agent Name</Label>
+            <Label>Date of commencement</Label>
           </Col>
-          <Col md="7">
-            <Input
-              type="text"
-              value={property.agencyName}
-              onChange={e => {
-                setProperty({ ...property, agencyName: e.target.value });
-              }}
+          <Col md="5">
+            <ValidDatePicker
+              validationMessage={notNullDate(property.commencementDate)}
+              selected={property.commencementDate}
+              onChange={date =>
+                setProperty({ ...property, commencementDate: date })
+              }
             />
           </Col>
         </Row>
+      </FormCard>
+
+      <FormCard header="Property Manager Details" icon="userTie">
+        <StandardInput
+          label="Agent Name"
+          validation={notNullAgency}
+          type="text"
+          value={property.agencyName}
+          onChange={e => {
+            setProperty({ ...property, agencyName: e.target.value });
+          }}
+        />
       </FormCard>
 
       <ProgressButtons

@@ -3,6 +3,7 @@ import { PROPERTY_GET, PROPERTY_SET } from "../actions";
 export const initialPropertyState = {
   address: "",
   type: null,
+  commencementDate: null,
   agencyName: ""
 };
 

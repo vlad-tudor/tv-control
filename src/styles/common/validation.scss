@@ -1,0 +1,10 @@
+.with-validation {
+  text-align: left;
+
+  .validation-message {
+    color: red;
+    text-align: left;
+    padding: 0.3rem;
+    width: 100%;
+  }
+}
